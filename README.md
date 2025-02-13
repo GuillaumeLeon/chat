@@ -1,5 +1,10 @@
 # Chat
 
+### DB setup
+  * docker run --name some-postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres
+  * mix ecto.create
+  * mix ecto.migrate
+
 To start your Phoenix server:
 
   * Run `mix setup` to install and setup dependencies
