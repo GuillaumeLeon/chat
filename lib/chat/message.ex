@@ -5,6 +5,7 @@ defmodule Chat.Message do
   schema "message" do
     field :from, :string
     field :content, :string
+    belongs_to :user, EctoAssoc.User
     belongs_to :room, EctoAssoc.Room
 
     timestamps(type: :utc_datetime)
