@@ -5,8 +5,8 @@ defmodule Chat.Message do
   schema "message" do
     field :from, :string
     field :content, :string
-    belongs_to :user, EctoAssoc.User
-    belongs_to :room, EctoAssoc.Room
+    belongs_to :user, Chat.Accounts.User
+    belongs_to :room, Chat.Room
 
     timestamps(type: :utc_datetime)
   end
@@ -14,7 +14,7 @@ defmodule Chat.Message do
   @doc false
   def changeset(message, attrs) do
     message
-    |> cast(attrs, [:content, :from, :room_id])
+    |> cast(attrs, [:content, :from, :room_id, :user_id])
     |> validate_required([:content, :from, :room_id])
   end
 end
