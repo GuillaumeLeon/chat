@@ -17,14 +17,6 @@ defmodule ChatWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", ChatWeb do
-    pipe_through [:browser, :require_authenticated_user]
-
-    # get "/", PageController, :home
-    live "/", RoomsLive
-    live "/room/:id", RoomLive
-  end
-
   # Other scopes may use custom stacks.
   # scope "/api", ChatWeb do
   #   pipe_through :api
@@ -70,6 +62,8 @@ defmodule ChatWeb.Router do
       on_mount: [{ChatWeb.UserAuth, :ensure_authenticated}] do
       live "/users/settings", UserSettingsLive, :edit
       live "/users/settings/confirm_email/:token", UserSettingsLive, :confirm_email
+      live "/", RoomsLive
+      live "/room/:id", RoomLive
     end
   end
 
